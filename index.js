@@ -8,6 +8,14 @@ const DOMSelectors = {
 
 console.log(DOMSelectors.description);
 
+function storeInput(){
+
+}
+
+function sillyMath(){
+
+}
+
 function createObject(){
     let form = document.querySelector(".enter");
     form.addEventListener("submit", function(event) { //it was click and button
@@ -17,4 +25,3 @@ function createObject(){
 }) 
 }
 
-changeColor();
