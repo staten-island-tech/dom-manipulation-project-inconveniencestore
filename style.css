@@ -8,7 +8,14 @@ html,
     font-family: "Comic Sans MS", "Comic Sans", sans-serif;
 }
 
+body {
+    text-align: center;
+}
+
 h1 {
     font-size: 2rem;
+}
 
+.input {
+    padding: .4rem;
 }
