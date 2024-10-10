@@ -10,12 +10,45 @@ html,
 
 body {
     text-align: center;
+    background-color: blue;
 }
 
 h1 {
     font-size: 2rem;
+    color: rgb(255, 0, 191);
+}
+
+.main-box {
+    display: flex;
+    margin: 0 auto;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%
+}
+
+img {}
+
+.box {
+    color: yellow;
+    background-color: red;
+
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    flex-grow: 1;
+    text-align: center;
+    padding: 2%;
+
+    width: 30%;
+    max-width: 40%;
+    height: 40%;
+    margin: 2%;
+
 }
 
 .input {
     padding: .4rem;
+    color: rgb(255, 162, 0);
 }
