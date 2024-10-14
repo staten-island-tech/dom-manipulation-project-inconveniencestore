@@ -3,22 +3,23 @@ console.log(header.parentElement);  */
 
 //create object to store data
 const DOMSelectors = {
-    colorBox: document.querySelector(`.color-box`),
-    button: document.querySelector("button"),
-    name: document.querySelector(`#name`)
+  colorBox: document.querySelector(`.color-box`),
+  button: document.querySelector("button"),
+  name: document.querySelector(`#name`),
+  container: document.querySelector(`.main-box`),
 };
 
-console.log(DOMSelectors.description)
+console.log(DOMSelectors.description);
 
-const information = Array.from(item);
+//const information = Array.from(item);
 
 //event listener for form
-DOMSelectors.button.addEventListener("click", function() {
-    let name = DOMSelectors.name.value;
-    event.preventDefault();
+DOMSelectors.button.addEventListener("click", function () {
+  let name = DOMSelectors.name.value;
 
-    DOMSelectors.container.insertAdjacentHTML(
-        "beforeend", ` <div class="main-box">
+  DOMSelectors.container.insertAdjacentHTML(
+    "beforeend",
+    ` <div class="main-box">
         <div class="box">
             <h2>Name</h2>
             <ul>
@@ -31,19 +32,15 @@ DOMSelectors.button.addEventListener("click", function() {
                 <h3>#000000</h3>
             </div>
         </div>`
-    );
-})
+  );
+});
 
-function storeInput(){
-
-}
+//function storeInput() {}
 
 //get values for the object
 
 //turn stuff into base 16
-function sillyMath(){
-
-}
+//function sillyMath() {}
 
 //create the card and insert?
 /* function createObject(){
@@ -56,4 +53,3 @@ function sillyMath(){
 } */
 
 //find and remove buttons, add event listeners?
-
