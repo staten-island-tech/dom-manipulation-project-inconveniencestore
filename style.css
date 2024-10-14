@@ -10,12 +10,12 @@ html,
 
 body {
     text-align: center;
-    background-color: blue;
+    background-color: rgb(211, 211, 211);
 }
 
 h1 {
     font-size: 5rem;
-    color: rgb(255, 0, 191);
+    color: rgb(37, 37, 37);
 }
 
 h2 {
@@ -37,20 +37,20 @@ h2 {
 
     display: flex;
     align-items: center;
-    flex-flow: column wrap;
+    flex-flow: column;
     justify-content: space-around;
     flex-grow: 1;
     text-align: center;
     padding: 2%;
 
-    width: 40rem;
+    width: 20rem;
     max-width: 50rem;
-    height: 10rem;
+    height: 30rem;
     margin: 2%;
 
 }
 
 .input {
     padding: .4rem;
-    color: rgb(255, 162, 0);
+    color: rgb(0, 0, 0);
 }

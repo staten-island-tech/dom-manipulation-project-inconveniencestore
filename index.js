@@ -13,6 +13,20 @@ const DOMSelectors = {
 
 console.log(DOMSelectors.description);
 
+// Function to hash string inputs into a numeric value
+function hashCode(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash); //dont get this
+  }
+  return hash;
+}
+
+// hash 2 color code
+function intToRGB(hash) {
+  let color = (hash & 0x00ffffff).toString(16).toUpperCase(); //dont get this
+  return "#" + "00000".substring(0, 6 - color.length) + color; //dont get the later portion
+}
 //const information = Array.from(item);
 
 //event listener for form
@@ -21,27 +35,31 @@ DOMSelectors.button.addEventListener("click", function () {
   let food = DOMSelectors.food.value;
   let date = DOMSelectors.date.value;
 
+  let combinedInput = name + food + date;
+  let colorHash = hashCode(combinedInput);
+  let color = intToRGB(colorHash); // Convert the hash to a hex color code
+
+  // Corrected the inline style formatting
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
     `<div class="box">
-            <ul>
-                <li>Your Name: ${name} </li>
-                <li>Favorite Food: ${food} </li>
-                <li>User's Birth date: ${date} </li>
-            </ul>
-            <div class="color-box">
-                <h2>I think you'll like the color:</h2>
-                <h3>#000000</h3>
-            </div>`
+              <ul>
+                  <li>Your Name: ${name} </li>
+                  <li>Favorite Food: ${food} </li>
+                  <li>User's Birth date: ${date} </li>
+              </ul>
+              <div class="color-box" style="background-color: ${color};">
+                  <h2>I think you'll like the color:</h2>
+                  <h3>${color}</h3>
+              </div>
+      </div>`
   );
 });
 
-//function storeInput() {}
-
-//get values for the object
-
 //turn stuff into base 16
 //function sillyMath() {}
+
+//element.style.backgroundColor = "#FF0000";
 
 //create the card and insert?
 /* function createObject(){
