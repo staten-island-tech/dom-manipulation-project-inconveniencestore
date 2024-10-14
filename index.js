@@ -6,6 +6,8 @@ const DOMSelectors = {
   colorBox: document.querySelector(`.color-box`),
   button: document.querySelector("button"),
   name: document.querySelector(`#name`),
+  food: document.querySelector(`#food`),
+  date: document.querySelector(`#date`),
   container: document.querySelector(`.main-box`),
 };
 
@@ -16,22 +18,21 @@ console.log(DOMSelectors.description);
 //event listener for form
 DOMSelectors.button.addEventListener("click", function () {
   let name = DOMSelectors.name.value;
+  let food = DOMSelectors.food.value;
+  let date = DOMSelectors.date.value;
 
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
-    ` <div class="main-box">
-        <div class="box">
-            <h2>Name</h2>
+    `<div class="box">
             <ul>
-                <li>Your Name: ${name}</li>
-                <li>Favorite Food:</li>
-                <li>User's Birth date: </li>
+                <li>Your Name: ${name} </li>
+                <li>Favorite Food: ${food} </li>
+                <li>User's Birth date: ${date} </li>
             </ul>
             <div class="color-box">
                 <h2>I think you'll like the color:</h2>
                 <h3>#000000</h3>
-            </div>
-        </div>`
+            </div>`
   );
 });
 
