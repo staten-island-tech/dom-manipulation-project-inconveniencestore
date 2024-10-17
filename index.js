@@ -4,12 +4,24 @@ console.log(header.parentElement);  */
 //create object to store data
 const DOMSelectors = {
   colorBox: document.querySelector(`.color-box`),
-  button: document.querySelector("button"),
+  button: document.querySelector(`.submit`),
+  remove: document.querySelector(`.remove`),
   name: document.querySelector(`#name`),
   food: document.querySelector(`#food`),
   date: document.querySelector(`#date`),
   container: document.querySelector(`.main-box`),
+  box: document.querySelector(".box"),
 };
+
+const colorInfo = [];
+
+function turnToRGB(value) {
+  let hash = 0;
+  for (let i = 0; i < value.length; i++) {
+    hash = value.charCodeAt(i);
+  }
+  return hash;
+}
 
 function acquireColor(name, food, date) {
   let combined = name + food + date;
@@ -17,7 +29,7 @@ function acquireColor(name, food, date) {
   for (let i = 0; i < combined.length; i++) {
     color = name.charCodeAt(i);
   }
-  return console.log(color);
+  return color;
 }
 
 // Function to hash string inputs into a numeric value
@@ -28,7 +40,6 @@ function acquireColor(name, food, date) {
   }
   return hash;
 } */
-
 // hash 2 color code
 /* function intToRGB(hash) {
   let color = (hash & 0x00ffffff).toString(16).toUpperCase(); //dont get this
@@ -37,14 +48,18 @@ function acquireColor(name, food, date) {
 //const information = Array.from(item);
 
 //event listener for form
-DOMSelectors.button.addEventListener("click", function () {
+DOMSelectors.button.addEventListener("click", function (event) {
   event.preventDefault();
 
   let name = DOMSelectors.name.value;
   let food = DOMSelectors.food.value;
   let date = DOMSelectors.date.value;
 
-  acquireColor(name, food, date);
+  colorInfo.push({ name, food, date });
+
+  console.log(colorInfo);
+
+  let color = acquireColor(name, food, date);
   /*   let combinedInput = name + food + date;
   let colorHash = hashCode(combinedInput);
   let color = intToRGB(colorHash); // Convert the hash to a hex color code */
@@ -58,16 +73,18 @@ DOMSelectors.button.addEventListener("click", function () {
                   <li>Favorite Food: ${food} </li>
                   <li>User's Birth date: ${date} </li>
               </ul>
-              <div class="color-box" style="background-color: ;">
+              <div class="color-box" style="background-color: #${color};">
                   <h2>I think you'll like the color:</h2>
-                  <h3>$</h3>
+                  <h3>#${color}</h3>
               </div>
+              <button type="submit">remove</button>
       </div>`
   );
 });
 
-//turn stuff into base 16
-//function sillyMath() {}
+/* DOMSelectors.remove.addEventListener("click", function (event) {
+  box.remove;
+}); */
 
 //element.style.backgroundColor = "#FF0000";
 
