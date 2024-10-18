@@ -15,37 +15,17 @@ const DOMSelectors = {
 
 const colorInfo = [];
 
-function turnToRGB(value) {
-  let hash = 0;
-  for (let i = 0; i < value.length; i++) {
-    hash = value.charCodeAt(i);
-  }
-  return hash;
-}
-
-function acquireColor(name, food, date) {
-  let combined = name + food + date;
+function acquireColor(value) {
   let color = 0;
-  for (let i = 0; i < combined.length; i++) {
-    color = name.charCodeAt(i);
+  for (let i = 0; i < value.length; i++) {
+    color += value.charCodeAt(i); //combined length, gets unicode for character at the length of the for loop
+    if (color >= 255) {
+      color = color % 256; //remainder
+    }
   }
+  console.log(color);
   return color;
 }
-
-// Function to hash string inputs into a numeric value
-/* function hashCode(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash); //dont get this
-  }
-  return hash;
-} */
-// hash 2 color code
-/* function intToRGB(hash) {
-  let color = (hash & 0x00ffffff).toString(16).toUpperCase(); //dont get this
-  return "#" + "00000".substring(0, 6 - color.length) + color; //dont get the later portion
-} */
-//const information = Array.from(item);
 
 //event listener for form
 DOMSelectors.button.addEventListener("click", function (event) {
@@ -59,7 +39,9 @@ DOMSelectors.button.addEventListener("click", function (event) {
 
   console.log(colorInfo);
 
-  let color = acquireColor(name, food, date);
+  let colorOne = acquireColor(name);
+  let colorTwo = acquireColor(food);
+  let colorThree = acquireColor(date);
   /*   let combinedInput = name + food + date;
   let colorHash = hashCode(combinedInput);
   let color = intToRGB(colorHash); // Convert the hash to a hex color code */
@@ -67,17 +49,17 @@ DOMSelectors.button.addEventListener("click", function (event) {
   // Corrected the inline style formatting
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
-    `<div class="box">
+    `<div class="box" style="background-color: rgb(${colorOne}, ${colorTwo}, ${colorThree});">
               <ul>
                   <li>Your Name: ${name} </li>
                   <li>Favorite Food: ${food} </li>
                   <li>User's Birth date: ${date} </li>
               </ul>
-              <div class="color-box" style="background-color: #${color};">
+              <div class="color-box" style="background-color: rgb(${colorOne}, ${colorTwo}, ${colorThree});">
                   <h2>I think you'll like the color:</h2>
-                  <h3>#${color}</h3>
+                  <h3>rgb(${colorOne}, ${colorTwo}, ${colorThree})</h3>
               </div>
-              <button type="submit">remove</button>
+              <button type="remove">remove</button>
       </div>`
   );
 });
@@ -85,17 +67,3 @@ DOMSelectors.button.addEventListener("click", function (event) {
 /* DOMSelectors.remove.addEventListener("click", function (event) {
   box.remove;
 }); */
-
-//element.style.backgroundColor = "#FF0000";
-
-//create the card and insert?
-/* function createObject(){
-    let form = document.querySelector(".enter");
-    form.addEventListener("submit", function(event) { //it was click and button
-        event.preventDefault();
-        console.log(event.target); //event.target = element
-        button.style.backgroundColor = "red";
-}) 
-} */
-
-//find and remove buttons, add event listeners?
