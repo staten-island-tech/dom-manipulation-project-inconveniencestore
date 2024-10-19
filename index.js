@@ -8,7 +8,6 @@ const DOMSelectors = {
   food: document.querySelector(`#food`),
   date: document.querySelector(`#date`),
   container: document.querySelector(`.main-box`),
-  box: document.querySelector(".box"),
 };
 
 function acquireColor(value) {
@@ -20,7 +19,7 @@ function acquireColor(value) {
   return color;
 }
 
-//make text dark if overly light
+//make text dark if overly light (which is over 190 in my very personal opinion)
 function darkText(r, g, b) {
   console.log(r, g, b);
   if (r > 190 || g > 190 || b > 190) {
@@ -50,25 +49,27 @@ DOMSelectors.button.addEventListener("click", function (event) {
     date: DOMSelectors.date.value,
   };
 
-  //do math
-  let colorOne = acquireColor(info.name);
-  let colorTwo = acquireColor(info.food);
-  let colorThree = acquireColor(info.date);
+  //do math and make another object
+  const color = {
+    One: acquireColor(info.name),
+    Two: acquireColor(info.food),
+    Three: acquireColor(info.date),
+  };
 
-  text = darkText(colorOne, colorTwo, colorThree);
+  text = darkText(color.One, color.Two, color.Three);
 
   // Corrected the inline style formatting
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
-    `<div class="box" style="background-color: rgb(${colorOne}, ${colorTwo}, ${colorThree}); color: rgb(${text}, ${text}, ${text});">
+    `<div class="box" style="background-color: rgb(${color.One}, ${color.Two}, ${color.Three}); color: rgb(${text}, ${text}, ${text});">
         <ul>
             <li>Name: ${info.name} </li>
             <li>Favorite Food: ${info.food} </li>
             <li>Birth date: ${info.date} </li>
         </ul>
-        <div class="color-box" style="background-color: rgb(${colorOne}, ${colorTwo}, ${colorThree});">
+        <div class="color-box" style="background-color: rgb(${color.ne}, ${color.Two}, ${color.Three});">
             <h2>I think you'll like the color:</h2>
-            <h3>rgb(${colorOne}, ${colorTwo}, ${colorThree})</h3>
+            <h3>rgb(${color.One}, ${color.Two}, ${color.Three})</h3>
         </div>
         <button type="button" class= "remove">remove</button>
       </div>`
@@ -82,5 +83,5 @@ DOMSelectors.button.addEventListener("click", function (event) {
     newBox.remove();
   });
 
-  clearFields(info);
+  clearFields();
 });
