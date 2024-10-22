@@ -56,7 +56,6 @@ DOMSelectors.button.addEventListener("click", function (event) {
     Three: acquireColor(info.date),
   };
 
-  console.log(colorInfo);
   text = darkText(color.One, color.Two, color.Three);
 
   DOMSelectors.container.insertAdjacentHTML(
