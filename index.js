@@ -56,9 +56,13 @@ DOMSelectors.button.addEventListener("click", function (event) {
     Three: acquireColor(info.date),
   };
 
+  console.log(colorInfo);
+
+  let colorOne = acquireColor(name);
+  let colorTwo = acquireColor(food);
+  let colorThree = acquireColor(date);
   text = darkText(color.One, color.Two, color.Three);
 
-  // Corrected the inline style formatting
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
     `<div class="box" style="background-color: rgb(${color.One}, ${color.Two}, ${color.Three}); color: rgb(${text}, ${text}, ${text});">
@@ -67,7 +71,7 @@ DOMSelectors.button.addEventListener("click", function (event) {
             <li>Favorite Food: ${info.food} </li>
             <li>Birth date: ${info.date} </li>
         </ul>
-        <div class="color-box" style="background-color: rgb(${color.ne}, ${color.Two}, ${color.Three});">
+        <div class="color-box" style="background-color: rgb(${color.One}, ${color.Two}, ${color.Three});">
             <h2>I think you'll like the color:</h2>
             <h3>rgb(${color.One}, ${color.Two}, ${color.Three})</h3>
         </div>
