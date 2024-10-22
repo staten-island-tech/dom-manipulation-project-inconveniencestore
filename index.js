@@ -57,10 +57,6 @@ DOMSelectors.button.addEventListener("click", function (event) {
   };
 
   console.log(colorInfo);
-
-  let colorOne = acquireColor(name);
-  let colorTwo = acquireColor(food);
-  let colorThree = acquireColor(date);
   text = darkText(color.One, color.Two, color.Three);
 
   DOMSelectors.container.insertAdjacentHTML(
